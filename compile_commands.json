@@ -1,0 +1,30 @@
+[
+  {
+    "file": "camera.cpp",
+    "arguments": [
+      "/opt/homebrew/opt/llvm/bin/clang++",
+      "-std=c++17",
+      "-Wall",
+      "-I/opt/homebrew/opt/raylib/include",
+      "-o",
+      "main",
+      "camera.cpp"
+    ],
+    "directory": "/Users/sayat/yomi_clone",
+    "output": "main"
+  },
+  {
+    "file": "main.cpp",
+    "arguments": [
+      "/opt/homebrew/opt/llvm/bin/clang++",
+      "-std=c++17",
+      "-Wall",
+      "-I/opt/homebrew/opt/raylib/include",
+      "-o",
+      "main",
+      "main.cpp"
+    ],
+    "directory": "/Users/sayat/yomi_clone",
+    "output": "main"
+  }
+]

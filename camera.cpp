@@ -4,9 +4,9 @@
 GameCam::GameCam(Vector2 position) {
     Camera2D camera = {0};
     this->camera = camera;
-    this->update(position);
     camera.rotation = 0.0f;
     camera.zoom = 1.0f;
+    this->update(position);
 }
 
 void GameCam::update(Vector2 position) {

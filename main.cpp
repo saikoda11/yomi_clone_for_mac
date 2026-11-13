@@ -34,8 +34,8 @@ int main() {
     }};
 
     Player player = {
-        .size = {40, 40},
-        .pos = {(float) WIDTH / 2 - 20, boundaries[1].rect.y - 20},
+        .size = {64, 64},
+        .pos = {(float) WIDTH / 2, boundaries[1].rect.y},
         .velocity = {0, 0},
         .acceleration = {0, -G},
         .in_air = true,
@@ -82,7 +82,7 @@ int main() {
 
 void drawPlayers(const std::vector<Player> &players) {
     for (int i = 0; i < players.size(); ++i) {
-        DrawRectangleV(players[i].pos, players[i].size, players[i].color);
+        DrawRectangleV({players[i].pos.x - players[i].size.x / 2,players[i].pos.y - players[i].size.y / 2}, players[i].size, players[i].color);
     }
 }
 
@@ -93,20 +93,20 @@ void updatePlayerPos(Player &player, const std::array<Boundary, 4> &boundaries) 
     if (IsKeyDown(KEY_A)) {
         player.pos.x -= 4;
     }
-    if (player.pos.x < boundaries[2].rect.x + boundaries[2].rect.width) {
-        player.pos.x = boundaries[2].rect.x + boundaries[2].rect.width;
+    if (player.pos.x - player.size.x / 2 < boundaries[2].rect.x + boundaries[2].rect.width) {
+        player.pos.x = boundaries[2].rect.x + boundaries[2].rect.width + player.size.x / 2;
     }
-    if (player.pos.x + player.size.x > boundaries[3].rect.x) {
-        player.pos.x = boundaries[3].rect.x - player.size.x;
+    if (player.pos.x + player.size.x / 2 > boundaries[3].rect.x) {
+        player.pos.x = boundaries[3].rect.x - player.size.x / 2;
     }
 
     player.velocity.y += player.acceleration.y;
     player.pos.y += player.velocity.y;
-    if (player.pos.y < boundaries[0].rect.y + boundaries[0].rect.height) {
-        player.pos.y = boundaries[0].rect.y + boundaries[0].rect.height;
+    if (player.pos.y - player.size.y / 2 < boundaries[0].rect.y + boundaries[0].rect.height) {
+        player.pos.y = boundaries[0].rect.y + boundaries[0].rect.height + player.size.y / 2;
     }
-    if (player.pos.y + player.size.y > boundaries[1].rect.y) {
-        player.pos.y = boundaries[1].rect.y - player.size.y;
+    if (player.pos.y + player.size.y / 2 > boundaries[1].rect.y) {
+        player.pos.y = boundaries[1].rect.y - player.size.y / 2;
         player.in_air = false;
     }
 }
